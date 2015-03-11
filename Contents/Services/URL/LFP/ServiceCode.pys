@@ -1,0 +1,81 @@
+# -*- coding: utf-8 -*-
+HTTP_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0',
+  'Accept-Encoding': 'gzip, deflate',
+  'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Connection': 'keep-alive',
+  'Origin': 'http://www.lfp.es',
+  'Referer': 'http://www.lfp.es/multimedia'
+}
+
+RE_JSON = Regex('setup\(({.+?})\);', Regex.DOTALL)
+
+####################################################################################################
+def NormalizeURL(url):
+  return url
+
+####################################################################################################
+def MetadataObjectForURL(url):
+
+  try:
+    content = HTML.ElementFromURL(url, headers = HTTP_HEADERS, cacheTime = CACHE_1DAY)
+  except:
+    raise Ex.MediaNotAvailable
+
+  date = content.xpath('//div[@id="fecha_noticia"]/time/@datetime')[0]
+  #Log.Info("[LFP URLSERVICE METADATAOBJECTFORURL] DATE " + date)
+  title = content.xpath('//h2[@id="titular_noticia"]/text()')[0]
+  #Log.Info("[LFP URLSERVICE METADATAOBJECTFORURL] TITLE " + title)
+  summary = content.xpath('//div[@id="texto_noticia"]/text()|//div[@id="texto_noticia"]/p/text()')
+  copyright = content.xpath('//div[@id="texto_noticia"]/span[@id="copyright_noticia"]//text()')
+  copyright = " ".join(x.strip() for x in copyright)
+  summary.append(copyright)
+  summary = "\n".join(x.strip() for x in summary)
+  #Log.Info("[LFP URLSERVICE METADATAOBJECTFORURL] SUMMARY " + summary)
+
+  thumb = content.xpath('//meta[@name="twitter:image:src"]/@content')[0]
+  #Log.Info("[LFP URLSERVICE METADATAOBJECTFORURL] THUMB " + thumb)
+
+  return VideoClipObject(
+    title = title,
+    summary = summary,
+    originally_available_at = Datetime.ParseDate(date).date(),
+    thumb = Resource.ContentsOfURLWithFallback(thumb),
+    art = Resource.ContentsOfURLWithFallback(thumb)
+  )
+
+####################################################################################################
+@deferred
+def MediaObjectsForURL(url):
+
+  return [
+    MediaObject(
+      parts = [
+        PartObject(
+          key = Callback(PlayVideo, url = url)
+        )
+      ],
+      protocol = Protocol.RTMP,
+      container = Container.MP4,
+      video_codec = VideoCodec.H264,
+      audio_codec = AudioCodec.AAC,
+      audio_channels = 2,
+      optimized_for_streaming = True
+    )
+  ]
+
+####################################################################################################
+@indirect
+def PlayVideo(url):
+  try:
+    content = HTML.ElementFromURL(url, headers = HTTP_HEADERS, cacheTime = CACHE_1DAY)
+    # content = HTML.StringFromElement(content)
+    # json = RE_JSON.search(content).group(1)
+    # json = JSON.ObjectFromString(json)
+    # video = json['file']
+    video = content.xpath('//meta[@name="twitter:player:stream"]/@content')[0]
+    #Log.Info("[LFP URLSERVICE PLAYVIDEO] VIDEO " + video)
+    return IndirectResponse(VideoClipObject, key=video)
+  except:
+    raise Ex.MediaNotAvailable
