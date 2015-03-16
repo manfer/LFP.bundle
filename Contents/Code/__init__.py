@@ -536,10 +536,8 @@ def lfp_play(url, title):
   return oc
 
 ################################################################################
-@route(PREFIX+'/search/{query}')
+@route(PREFIX+'/search', page = int)
 def lfp_search(query, page = 1):
-
-  page = int(page) 
 
   oc = ObjectContainer(
     title2 = unicode(L('Search Results') + ': ' + query  + ' | ' + L('Page') + ' ' + str(page))
