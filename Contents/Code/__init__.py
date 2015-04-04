@@ -48,8 +48,6 @@ def Start():
   DirectoryObject.art = R(ART)
   PhotoAlbumObject.thumb = R(ICON)
 
-  Locale.DefaultLocale = Prefs["language"].split("/")[1]
-
   HTTP.CacheTime = CACHE_1HOUR
 
 ################################################################################
@@ -593,5 +591,6 @@ def lfp_search(query, page = 1):
 
 ################################################################################
 def L(string):
+  Request.Headers['X-Plex-Language'] = Prefs["language"].split("/")[1]
   local_string = Locale.LocalString(string)
   return str(local_string).decode()
