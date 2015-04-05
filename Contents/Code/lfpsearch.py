@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from lfputil import L
+
 LFP_SEARCH = "%s/buscador/{0}/?filtro=videos" % LFP_BASE_URL
 LFP_SEARCH_PAGE = "%s/buscador/{0}/page/{1}/?filtro=videos" % LFP_BASE_URL
 

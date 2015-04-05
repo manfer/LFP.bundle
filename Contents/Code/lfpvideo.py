@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from lfputil import L
+
 LFP_JORNADA      = '%s/includes/ajax.php?action=reload_multimedia_jornada' % LFP_BASE_URL
 LFP_OTROS_VIDEOS = '%s/includes/ajax.php?action=reload_multimedia_otros_videos' % LFP_BASE_URL
 LFP_GALA         = '%s/gala-lfp-2013-2014' % LFP_BASE_URL

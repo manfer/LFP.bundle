@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from lfputil import L
+
 LFP_LALIGATV_DIRECTOS = '%s/laligatv' % LFP_BASE_URL
 LFP_LALIGATV_RESUMENES = '%s/laligatv/resumenes' % LFP_BASE_URL
 LFP_LALIGATV_RESUMENES_TEMPORADA = '%s/laligatv/resumenes/{0}' % LFP_BASE_URL

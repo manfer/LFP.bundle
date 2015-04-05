@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from lfputil import L
+
 TITLE  = u'LFP'
 PREFIX = '/video/lfp'
 
@@ -91,9 +93,3 @@ def lfp_main_menu():
     ))
 
   return oc
-
-################################################################################
-def L(string):
-  Request.Headers['X-Plex-Language'] = Prefs["language"].split("/")[1]
-  local_string = Locale.LocalString(string)
-  return str(local_string).decode()
