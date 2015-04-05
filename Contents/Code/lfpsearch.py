@@ -39,7 +39,8 @@ def lfp_search(query, page = 1):
         ),
         title = video_title,
         summary = video_summary,
-        thumb = Resource.ContentsOfURLWithFallback(video_thumb)
+        thumb = Resource.ContentsOfURLWithFallback(url = video_thumb),
+        art = Resource.ContentsOfURLWithFallback(url = video_thumb)
       ))
 
     paginador = content.xpath('//div[@id="paginacion_otras_noticias"]/span/following-sibling::a')

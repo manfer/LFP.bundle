@@ -150,7 +150,8 @@ def lfp_galerias(url, title):
       rating_key = 'lfp_' + id,
       title = title,
       summary = summary,
-      thumb = Resource.ContentsOfURLWithFallback(thumb)
+      thumb = Resource.ContentsOfURLWithFallback(url = thumb),
+      art = Resource.ContentsOfURLWithFallback(url = thumb)
     ))
 
   return oc
@@ -170,12 +171,13 @@ def lfp_galeria(galeria, url, title):
   photos = data.xpath('//a[@data-fancybox-group="' + galeria + '"]')
 
   for index, photo in enumerate(photos):
-    url = photo.xpath('./@href')[0]
+    img = photo.xpath('./@href')[0]
     oc.add(PhotoObject(
-      key = url,
+      key = img,
       rating_key = 'lfp_' + galeria + '_foto' + str(index),
       title = unicode(title),
-      thumb = Resource.ContentsOfURLWithFallback(url)
+      thumb = Resource.ContentsOfURLWithFallback(url = img),
+      art = Resource.ContentsOfURLWithFallback(url = img)
     ))
 
   return oc

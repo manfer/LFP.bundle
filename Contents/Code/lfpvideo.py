@@ -199,7 +199,8 @@ def lfp_jornada(id_competicion, id_temporada, jornada, title):
         title = title
       ),
       title = title,
-      thumb = thumb
+      thumb = Resource.ContentsOfURLWithFallback(url = thumb),
+      art = Resource.ContentsOfURLWithFallback(url = thumb)
     ))
 
   if int(jornada) > 1:
@@ -243,7 +244,8 @@ def lfp_otros_videos(slug, title):
         title = title
       ),
       title = title,
-      thumb = thumb
+      thumb = Resource.ContentsOfURLWithFallback(url = thumb),
+      art = Resource.ContentsOfURLWithFallback(url = thumb)
     ))
 
   return oc
