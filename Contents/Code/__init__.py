@@ -13,8 +13,8 @@ LFP_HL_ICON       = 'highlights.png'
 LFP_VIDEO_ICON    = 'video.png'
 LFP_PHOTO_ICON    = 'photo.png'
 LFP_LALIGATV_ICON = 'laligatv.png'
-SEARCH_ICON     = 'search-icon.png'
-SETTINGS_ICON   = 'settings-icon.png'
+SEARCH_ICON       = 'search-icon.png'
+SETTINGS_ICON     = 'settings-icon.png'
 
 ART = 'futbol.jpg'
 
