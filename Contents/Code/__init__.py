@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from lfputil import L
-
 TITLE  = u'LFP'
 PREFIX = '/video/lfp'
 
@@ -28,6 +26,7 @@ HTTP_HEADERS = {
   'Referer': LFP_MULTIMEDIA
 }
 
+from lfputil import L
 from lfpvideo import *
 from lfpfoto import *
 from laligatv import *
