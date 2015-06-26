@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
 from lfputil import L
 
-LFP_SEARCH = "%s/buscador/{0}/?filtro=videos" % LFP_BASE_URL
-LFP_SEARCH_PAGE = "%s/buscador/{0}/page/{1}/?filtro=videos" % LFP_BASE_URL
+LFP_SEARCH = "%s/buscador/{0}/page/{1}/?filtro=videos" % LFP_BASE_URL
 
 ################################################################################
 @route(PREFIX+'/search', page = int)
 def lfp_search(query, page = 1):
 
+  search_query = String.Quote(query)
   oc = ObjectContainer(
-    title2 = unicode(L('Search Results') + ': ' + query  + ' | ' + L('Page') + ' ' + str(page))
+    title2 = unicode(L('Search Results') + ': ' + query + ' | ' + L('Page') + ' ' + str(page))
   )
 
   noresults = ObjectContainer(
+    title2 = unicode(L('Search Results') + ': ' + query + ' | ' + L('Page') + ' ' + str(page)),
     header   = L('Video not found'),
     message  = L('Video not found'),
     no_cache = True
   )
 
-  url = LFP_SEARCH.format(query) if (page == 1) else LFP_SEARCH_PAGE.format(query, str(page)) 
+  url = LFP_SEARCH.format(searh_query, str(page))
   content = HTML.ElementFromURL(
     url,
     headers = HTTP_HEADERS
