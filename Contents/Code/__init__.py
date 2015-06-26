@@ -2,7 +2,7 @@
 TITLE  = u'LFP'
 PREFIX = '/video/lfp'
 
-LFP_BASE_URL     = 'http://www.lfp.es'
+LFP_BASE_URL     = 'http://www.laliga.es'
 LFP_MULTIMEDIA   = '%s/multimedia' % LFP_BASE_URL
 
 LFP_ICON          = 'lfp.png'
