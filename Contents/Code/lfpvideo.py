@@ -46,7 +46,7 @@ def lfp_videos():
       slug = "lfp-world-challenge",
       title = L("LFP World Challenge")
     ),
-	title = L("LFP World Challenge"),
+    title = L("LFP World Challenge"),
     summary = L("LFP teams playing arround the world")
   ))
 
@@ -56,8 +56,18 @@ def lfp_videos():
       slug = "entrevistas-lfp",
       title = L("LFP Interviews")
     ),
-	title = L("LFP Interviews"),
+    title = L("LFP Interviews"),
     summary = L("interviews to members of the LFP")
+  ))
+
+  oc.add(DirectoryObject(
+    key = Callback(
+      lfp_otros_videos,
+      slug = "reacciones-al-real-decreto",
+      title = L("Royal Decree Reactions")
+    ),
+    title = L("Royal Decree Reactions"),
+    summary = L("reactions to the royal decree")
   ))
 
   oc.add(DirectoryObject(
@@ -66,8 +76,18 @@ def lfp_videos():
       slug = "gala-lfp-201314",
       title = L("LFP 2014 Awards Ceremony")
     ),
-	title = L("LFP 2014 Awards Ceremony"),
+    title = L("LFP 2014 Awards Ceremony"),
     summary = L("the 2014 awards ceremony best moments")
+  ))
+
+  oc.add(DirectoryObject(
+    key = Callback(
+      lfp_otros_videos,
+      slug = "gala-lfp-201213",
+      title = L("LFP 2013 Awards Ceremony")
+    ),
+    title = L("LFP 2013 Awards Ceremony"),
+    summary = L("the 2013 awards ceremony best moments")
   ))
 
   oc.add(DirectoryObject(
@@ -76,7 +96,7 @@ def lfp_videos():
       slug = "champions-for-life",
       title = L("Champions for Life")
     ),
-	title = L("Champions for Life"),
+    title = L("Champions for Life"),
     summary = L("match for the childhood")
   ))
 
@@ -86,7 +106,7 @@ def lfp_videos():
       slug = "el-clasico",
       title = L("The Classic")
     ),
-	title = L("The Classic"),
+    title = L("The Classic"),
     summary = L("the rivalry matches Barcelona vs Real Madrid")
   ))
 
@@ -96,8 +116,18 @@ def lfp_videos():
       slug = "america",
       title = L("America")
     ),
-	title = L("America"),
+    title = L("America"),
     summary = L("american Players in LFP")
+  ))
+
+  oc.add(DirectoryObject(
+    key = Callback(
+      lfp_otros_videos,
+      slug = "tpo",
+      title = L("TPO")
+    ),
+    title = L("TPO"),
+    summary = L("investment funds")
   ))
 
   oc.add(DirectoryObject(
@@ -106,7 +136,7 @@ def lfp_videos():
       slug = "otros",
       title = L("Others")
     ),
-	title = L("Others"),
+    title = L("Others"),
     summary = L("other videos from LFP")
   ))
 
