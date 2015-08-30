@@ -13,7 +13,7 @@ def lfp_fotos():
       id_competicion = "1",
       title = L("BBVA League")
     ),
-	title = L("BBVA League"),
+    title = L("BBVA League"),
     summary = L("BBVA League teams photos")
   ))
 
@@ -23,7 +23,7 @@ def lfp_fotos():
       id_competicion = "2",
       title = L("Adelante League")
     ),
-	title = L("Adelante League"),
+    title = L("Adelante League"),
     summary = L("Adelante League teams photos")
   ))
 
@@ -33,7 +33,7 @@ def lfp_fotos():
       url = "http://www.lfp.es/multimedia/temporada-2014-2015/copa-del-rey",
       title = L("King's Cup")
     ),
-	title = L("King's Cup"),
+    title = L("King's Cup"),
     summary = L("King's cup photo galeries")
   ))
 
@@ -42,10 +42,10 @@ def lfp_fotos():
       lfp_galeria,
       galeria = 'gallery4_5',
       url = LFP_MULTIMEDIA,
-      title = L('Europe 2014-2015')
+      title = L('Europe 2015-2016')
     ),
     rating_key = 'lfp_gallery4_5',
-    title = L('Europe 2014-2015'),
+    title = L('Europe 2015-2016'),
     summary = L('BBVA league teams in european competitions')
   ))
 
